@@ -1,5 +1,5 @@
 /**
- * @author Uliana Strfanishyna
+ * @author Uliana Stefanishyna
  * @date 26.11.2017
  * @version 1.0
  * @class CheckStructure contains procedures for analyzing structure of given code on C++

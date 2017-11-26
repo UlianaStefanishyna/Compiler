@@ -13,10 +13,23 @@
 #ifndef COMPILER_SYNTAXANALYZER_H
 #define COMPILER_SYNTAXANALYZER_H
 
+#include "LexicalAnalyzer.h"
 
-class SyntaxAnalyzer {
+class SyntaxAnalyzer : LexicalAnalyzer {
+    string m_Statement;
+public:
+    const string &getM_Statement() const;
 
+public:
+    vector<char> vCharSigns = {'!', '*', '(', '{'};
+    vector<char> vAllowedAfterVariable = {';', '[', '+', '='};
+    vector<string> vStrSigns = {"--", "++"};
+    vector<char> vCharSignsNotFirst = {';', '[', ']', '+', '-', '*', '/', '='};
+
+
+
+    void lookingForEndOfStatement(string str);
+    bool isFirstCorrect(string x);
 };
-
 
 #endif //COMPILER_SYNTAXANALYZER_H

@@ -15,7 +15,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
-
+#include <iostream>
 using namespace std;
 
 class CheckStructure {
@@ -23,9 +23,10 @@ class CheckStructure {
     string m_sMainType;
     int m_coutTypes;        //for checkiing return value
     int m_countCalls;
-    vector<string> m_errors;
     bool m_fWrongType = false;
 
+protected:
+    vector<string> m_errors;
 public:
     CheckStructure() : m_coutTypes(0), m_countCalls(0){}
 
@@ -43,6 +44,7 @@ public:
     bool isTypeOfReturnValue(string val);
     bool isClosedStatement(string ch);
     bool isClosedBody(string ch);
+
 
     void check(string x);
     void print();

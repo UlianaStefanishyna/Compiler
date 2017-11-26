@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include "CheckStructure.h"
+#include "SyntaxAnalyzer.h"
 
 bool CheckStructure::isType(string begin) {
     m_coutTypes++;
@@ -74,8 +75,11 @@ bool CheckStructure::isClosedPar(string ch) {
 }
 
 bool CheckStructure::isOpenedBody(string ch) {
-    if (ch == delimiters[2])
+    if (ch == delimiters[2]) {
+        //SyntaxAnalyzer sa;
+        //sa.lookingForEndOfStatement(ch);
         return true;
+    }
     if (ch.substr(0, 1) == "{") {
         isReturn(ch.erase(0, 1));
         if (ch.substr(6, 1) != delimiters[3]) {

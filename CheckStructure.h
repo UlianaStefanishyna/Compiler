@@ -1,7 +1,11 @@
 /**
+ * @name Compiler C++ -> Assembly language
+ *
  * @author Uliana Stefanishyna
+ * @ingroup IO-52
  * @date 26.11.2017
  * @version 1.0
+ *
  * @class CheckStructure contains procedures for analyzing structure of given code on C++
  *
  * */
@@ -17,7 +21,7 @@ using namespace std;
 class CheckStructure {
 
     string m_sMainType;
-    int m_coutTypes;
+    int m_coutTypes;        //for checkiing return value
     int m_countCalls;
     vector<string> m_errors;
     bool m_fWrongType = false;

@@ -1,5 +1,8 @@
 /**
+ * @name Compiler C++ -> Assembly language
+ *
  * @author Uliana Stefanishyna
+ * @ingroup IO-52
  * @date 26.11.2017
  * @version 1.0
  *
@@ -74,8 +77,7 @@ bool CheckStructure::isOpenedBody(string ch) {
     if (ch == delimiters[2])
         return true;
     if (ch.substr(0, 1) == "{") {
-        isReturn(ch.erase(0,1));
-        //m_countCalls++;
+        isReturn(ch.erase(0, 1));
         if (ch.substr(6, 1) != delimiters[3]) {
             m_errors.push_back("wrong char after return statement");
             return false;
@@ -91,26 +93,25 @@ bool CheckStructure::isReturn(string nameReturn) {
         return true;
     if ((nameReturn.substr(0, 6) == nReturn) && (nameReturn.substr(6, 1) == delimiters[3]) && (m_sMainType == "void")) {
         m_countCalls += 2;
-        if(nameReturn.substr(7,1) == delimiters[4])
-            m_countCalls+=2;
+        if (nameReturn.substr(7, 1) == delimiters[4])
+            m_countCalls += 2;
         return true;
     }
-    if((m_sMainType == "void") && (nameReturn == delimiters[4])){
+    if ((m_sMainType == "void") && (nameReturn == delimiters[4])) {
         m_errors.push_back("missed body");
-        m_countCalls+=3;
+        m_countCalls += 3;
         return false;
     }
-
     m_errors.push_back("missed return statement");
     return false;
 }
 
 bool CheckStructure::isTypeOfReturnValue(string val) {
     if ((m_sMainType == "void") && (val.substr(0, val.size()) != delimiters[3])) {
-        if(!m_fWrongType) {
+        if (!m_fWrongType) {
             m_errors.push_back("wrong type of return statement");
         }
-        if (val.substr(val.size()-1, 1) == delimiters[3]) {
+        if (val.substr(val.size() - 1, 1) == delimiters[3]) {
             m_countCalls++;
             if (val.substr(2, 1) == delimiters[4])
                 m_countCalls++;
@@ -118,8 +119,8 @@ bool CheckStructure::isTypeOfReturnValue(string val) {
 
         return false;
     }
-    if ((m_sMainType != "void") && (val.substr(0,1) == delimiters[3])) {
-        if(!m_fWrongType)
+    if ((m_sMainType != "void") && (val.substr(0, 1) == delimiters[3])) {
+        if (!m_fWrongType)
             m_errors.push_back("no return value");
         isClosedStatement(val);
         m_countCalls++;
@@ -128,11 +129,11 @@ bool CheckStructure::isTypeOfReturnValue(string val) {
 
     if ((m_sMainType == "void") && (val == delimiters[3]))
         m_countCalls++;
-    if((m_sMainType != "void") && (val.erase(0,val.size()-1) == delimiters[3]))
+    if ((m_sMainType != "void") && (val.erase(0, val.size() - 1) == delimiters[3]))
         m_countCalls++;
-    if((m_sMainType != "void") && (val.erase(0,val.size()-1) == delimiters[4]))
-        if(val.erase(0,val.size()-2) == delimiters[3])
-            m_countCalls+=2;
+    if ((m_sMainType != "void") && (val.erase(0, val.size() - 1) == delimiters[4]))
+        if (val.erase(0, val.size() - 2) == delimiters[3])
+            m_countCalls += 2;
     return true;
 }
 
@@ -140,7 +141,7 @@ bool CheckStructure::isClosedStatement(string ch) {
     if (ch == delimiters[3])
         return true;
 
-    if (ch.erase(0,ch.size()-1) == delimiters[4]) {
+    if (ch.erase(0, ch.size() - 1) == delimiters[4]) {
         m_countCalls++;
         return true;
     }

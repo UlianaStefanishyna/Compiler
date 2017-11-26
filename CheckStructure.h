@@ -1,7 +1,10 @@
-//
-// Created by uliana on 26/11/17.
-//
-
+/**
+ * @author Uliana Strfanishyna
+ * @date 26.11.2017
+ * @version 1.0
+ * @class CheckStructure contains procedures for analyzing structure of given code on C++
+ *
+ * */
 #ifndef COMPILER_ISRIGHTSTRUCTOFPROGRAM_H
 #define COMPILER_ISRIGHTSTRUCTOFPROGRAM_H
 

@@ -1,3 +1,10 @@
+/**
+ * @author Uliana Strfanishyna
+ * @date 26.11.2017
+ * @version 1.0
+ * @mainpage
+ *
+ */
 #include <iostream>
 #include <fstream>
 #include "CheckStructure.h"

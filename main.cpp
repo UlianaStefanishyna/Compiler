@@ -37,16 +37,15 @@ void analyze(){
     getline(inFile,x,'\0');
     cout << x << endl;
 
-    SyntaxAnalyzer sa;
-    sa.lookingForEndOfStatement(x);
+    LexicalAnalyzer la;
+    la.lookingForEndOfStatement(x);
 
-    if(sa.isFirstCorrect(sa.getM_Statement()))
+    if(la.isFirstCorrect(la.getM_Statement()))
         cout << "good" << endl;
     else{
         cout << "not correct first char" << endl;
     }
-    LexicalAnalyzer la;
-    if(la.isCorrectVariable(sa.getM_Statement(),0)) {
+    if(la.isCorrectVariable(la.getM_Statement())) {
         cout << "correct var" << endl;
     }
     else {

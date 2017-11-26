@@ -16,9 +16,9 @@
 #include "LexicalAnalyzer.h"
 
 class SyntaxAnalyzer : LexicalAnalyzer {
-    string m_Statement;
+
 public:
-    const string &getM_Statement() const;
+
 
 public:
     vector<char> vCharSigns = {'!', '*', '(', '{'};
@@ -26,10 +26,10 @@ public:
     vector<string> vStrSigns = {"--", "++"};
     vector<char> vCharSignsNotFirst = {';', '[', ']', '+', '-', '*', '/', '='};
 
-
-
-    void lookingForEndOfStatement(string str);
+    void lookingForEndOfStatement(string str);  //get one statement
     bool isFirstCorrect(string x);
+    bool isSign(string x);
+
 };
 
 #endif //COMPILER_SYNTAXANALYZER_H

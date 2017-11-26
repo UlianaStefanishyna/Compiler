@@ -88,6 +88,12 @@ bool CheckStructure::isReturn(string nameReturn) {
             m_countCalls+=2;
         return true;
     }
+    if((m_sMainType == "void") && (nameReturn == delimiters[4])){
+        m_errors.push_back("missed body");
+        m_countCalls+=3;
+        return false;
+    }
+
     m_errors.push_back("missed return statement");
     return false;
 }
